@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="ftco-navbar" style="padding-top: 10px; padding-bottom: 10px;">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold d-flex align-items-center" href="{% url 'customer_index' %}" style="color: #275df5; font-size: 24px;">
+      Job<span style="color: #333333;">Detector</span>
+      <span class="badge ml-2" style="font-size: 12px; vertical-align: middle; background-color: #28a745; color: white;">Candidate</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item active"><a href="{% url 'customer_index' %}" class="nav-link" style="color: #333; font-weight: 500;">Dashboard</a></li>
+        <li class="nav-item"><a href="{% url 'customer_viewjobs' %}" class="nav-link" style="color: #333; font-weight: 500;">Browse Jobs</a></li>
+        <li class="nav-item"><a href="{% url 'customer_my_applications' %}" class="nav-link" style="color: #333; font-weight: 500;">My Applications</a></li>
+        <li class="nav-item"><a href="{% url 'fake_job_detector' %}" class="nav-link" style="color: #333; font-weight: 500;">AI Verifier</a></li>
+        <li class="nav-item"><a href="{% url 'customer_viewnotification' %}" class="nav-link" style="color: #333; font-weight: 500;">Alerts</a></li>
+
+        <li class="nav-item dropdown ml-lg-3">
+            <a class="nav-link dropdown-toggle btn btn-outline-primary px-3 py-2" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: 600; border-radius: 5px;">
+              <i class="icon-user mr-1"></i> My Account
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 mt-2" aria-labelledby="accountDropdown">
+                <a class="dropdown-item py-2" href="{% url 'customer_profile' %}">My Profile</a>
+                <a class="dropdown-item py-2" href="{% url 'customer_changepassword' %}">Change Password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger font-weight-bold py-2" href="{% url 'index' %}">Logout</a>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

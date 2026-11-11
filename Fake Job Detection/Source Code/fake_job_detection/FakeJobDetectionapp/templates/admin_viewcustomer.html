@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% load static %}
+    <title>Job Detector - View Registered Customers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Miss+Fajardose&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        /* Custom Card Styling for Admin View */
+        .customer-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            padding: 30px 20px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+            overflow: auto;
+            max-height: 480px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .customer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .badge-verified { background: #d4edda; color: #155724; }
+        .badge-pending { background: #fff3cd; color: #856404; }
+        .badge-rejected { background: #f8d7da; color: #721c24; }
+
+        .customer-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+            align-self: center;
+        }
+        .customer-name {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .customer-info {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 0 15px;
+            overflow: auto;
+            word-wrap: break-word;
+        }
+        .customer-info i, .customer-info span[class^="icon-"] {
+            color: #ff6f61;
+            margin-right: 15px;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .empty-state {
+            background: #fff;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Action Buttons Styling */
+        .card-actions {
+            margin-top: auto;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .btn-action-custom {
+            flex: 1;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            padding: 8px 10px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none !important;
+            text-align: center;
+        }
+        .btn-accept {
+            background-color: #28a745;
+            color: white;
+            border: 1px solid #28a745;
+        }
+        .btn-accept:hover {
+            background-color: #218838;
+            color: white;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        }
+        .btn-reject {
+            background-color: #dc3545;
+            color: white;
+            border: 1px solid #dc3545;
+        }
+        .btn-reject:hover {
+            background-color: #c82333;
+            color: white;
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+        }
+        .btn-approved-state {
+            background-color: #f8f9fa;
+            color: #28a745;
+            border: 1px solid #28a745;
+            cursor: default;
+        }
+        .btn-rejected-state {
+            background-color: #f8f9fa;
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            cursor: default;
+        }
+    </style>
+  </head>
+  <body>
+    {% include 'admin_header.html' %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/office_bg.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Registered Customers</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2"><a href="#">Home <i class="ion-ios-arrow-forward"></i></a></span>
+                <span>View Customers <i class="ion-ios-arrow-forward"></i></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section bg-light">
+       <div class="container">
+          <div class="row justify-content-center">
+             <div class="col-md-12">
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{% if message.tags == 'warning' %}danger{% else %}success{% endif %} alert-dismissible fade show mb-4" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="d-flex justify-content-between align-items-center mb-5 ftco-animate">
+                    <h2 class="mb-0" style="font-weight: 700; color: #333;">Customer Directory</h2>
+                </div>
+
+                <div class="row">
+                    {% if con %}
+                        {% for customer in con %}
+                        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch ftco-animate">
+                            <div class="customer-card w-100">
+
+                                {% if customer.status == 'Accepted' %}
+                                    <span class="status-badge badge-verified">Approved</span>
+                                {% elif customer.status == 'Rejected' %}
+                                    <span class="status-badge badge-rejected">Rejected</span>
+                                {% else %}
+                                    <span class="status-badge badge-pending">Pending</span>
+                                {% endif %}
+
+                                <img src="https://ui-avatars.com/api/?name={{ customer.name|urlencode }}&background=random&size=100&rounded=true" alt="{{ customer.name }}" class="customer-avatar">
+
+                                <h3 class="customer-name">{{ customer.name }}</h3>
+                                <hr style="border-top: 1px dashed #eee; margin: 15px 0;">
+
+                                <div>
+                                    <div class="customer-info">
+                                        <span class="icon-envelope"></span>
+                                        <span>{{ customer.email }}</span>
+                                    </div>
+                                    <div class="customer-info">
+                                        <span class="icon-phone"></span>
+                                        <span>{{ customer.mobile }}</span>
+                                    </div>
+                                    <div class="customer-info">
+                                        <span class="icon-map-marker"></span>
+                                        <span>{{ customer.address }}</span>
+                                    </div>
+                                    <div class="customer-info">
+                                        <span class="icon-map-pin"></span>
+                                        <span>{{ customer.pincode }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions">
+                                    {% if customer.status == 'Accepted' %}
+                                        <span class="btn-action-custom btn-approved-state">✔ Verified</span>
+                                        <a href="{% url 'reject_customer' customer.id %}" class="btn btn-action-custom btn-reject" onclick="return confirm('Are you sure you want to change this customer to Rejected?')">Reject</a>
+                                    {% elif customer.status == 'Rejected' %}
+                                        <a href="{% url 'accept_customer' customer.id %}" class="btn btn-action-custom btn-accept">Accept</a>
+                                        <span class="btn-action-custom btn-rejected-state">✖ Rejected</span>
+                                    {% else %}
+                                        <a href="{% url 'accept_customer' customer.id %}" class="btn btn-action-custom btn-accept">Accept</a>
+                                        <a href="{% url 'reject_customer' customer.id %}" class="btn btn-action-custom btn-reject" onclick="return confirm('Are you sure you want to reject this customer?')">Reject</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12 ftco-animate">
+                            <div class="empty-state">
+                                <span class="icon-users display-4 text-muted"></span>
+                                <h4 class="text-muted mt-3">No registered customers found.</h4>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+             </div>
+          </div>
+       </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <title>Job Detector Portal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    {% include 'jobprovider_header.html' %}
+
+    <section class="hero-wrap js-fullheight" style="background-image: url('{% static 'images/office_bg1.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay" style="background-color: rgba(39, 93, 245, 0.85);"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-10 text-center ftco-animate">
+            <h1 class="mb-4" style="color: white; font-weight: 700;">Find Your Next Great Hire</h1>
+            <p class="mb-4" style="color: #e0e0e0; font-size: 18px;">Post jobs, manage applications, and connect with top-tier verified talent.</p>
+
+            <a href="{% url 'jobprovider_addjob' %}" class="btn btn-primary py-3 px-4 font-weight-bold mt-3" style="border-radius: 5px; background-color: #17a2b8; border-color: #17a2b8;">Post a New Job</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-wrap-about ftco-no-pb">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 wrap-about ftco-animate text-center">
+            <div class="heading-section mb-4 text-center">
+              <span class="subheading">About Us</span>
+              <h2 class="mb-4">AI-Powered Job Detection</h2>
+            </div>
+            <p>We streamline the hiring process by connecting talented developers and engineers with top-tier organizations. Utilizing advanced machine learning algorithms and robust backend infrastructure, our platform filters out spam and ensures you only see high-quality, verified job listings tailored to your skillset.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url('{% static 'images/office_bg.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row d-md-flex align-items-center justify-content-center">
+          <div class="col-lg-10">
+            <div class="row d-md-flex align-items-center">
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                  <div class="text">
+                    <strong class="number" data-number="15000">0</strong>
+                    <span>Active Jobs</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                  <div class="text">
+                    <strong class="number" data-number="4500">0</strong>
+                    <span>Companies Hiring</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                  <div class="text">
+                    <strong class="number" data-number="12000">0</strong>
+                    <span>Candidates Placed</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                  <div class="text">
+                    <strong class="number" data-number="98">0</strong>
+                    <span>Verification Rate (%)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Growth</span>
+            <h2 class="mb-4">Career Services</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
+            <div class="media block-6 services d-block">
+              <div class="icon d-flex justify-content-center align-items-center">
+                <span class="flaticon-meeting"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Interview Preparation</h3>
+                <p>Access mock interviews and technical assessments to confidently tackle complex backend and data science rounds.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
+            <div class="media block-6 services d-block">
+              <div class="icon d-flex justify-content-center align-items-center">
+                <span class="icon-file-text"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">ATS Resume Building</h3>
+                <p>Optimize your resume format to pass seamlessly through automated applicant tracking systems.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
+            <div class="media block-6 services d-block">
+              <div class="icon d-flex justify-content-center align-items-center">
+                <span class="icon-briefcase"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Direct Referrals</h3>
+                <p>Connect directly with recruitment networks bypassing standard application queues.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Hiring Now</span>
+            <h2 class="mb-4">Top Recruiters</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 ftco-animate">
+            <div class="staff text-center border p-4 rounded">
+              <div class="img mb-4" style="background-image: url('{% static 'images/logo_gtc.jpg' %}'); border-radius: 50%; height: 120px; width: 120px; margin: 0 auto;"></div>
+              <div class="text">
+                <h3>GlobalTech Corp</h3>
+                <span class="position mb-2 d-block">150+ Openings</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 ftco-animate">
+            <div class="staff text-center border p-4 rounded">
+              <div class="img mb-4" style="background-image: url('{% static 'images/R.png' %}'); border-radius: 50%; height: 120px; width: 120px; margin: 0 auto;"></div>
+              <div class="text">
+                <h3>DataSystems Inc</h3>
+                <span class="position mb-2 d-block">85 Openings</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 ftco-animate">
+            <div class="staff text-center border p-4 rounded">
+              <div class="img mb-4" style="background-image: url('{% static 'images/logo_gtc.jpg' %}'); border-radius: 50%; height: 120px; width: 120px; margin: 0 auto;"></div>
+              <div class="text">
+                <h3>CloudNova Solutions</h3>
+                <span class="position mb-2 d-block">40 Openings</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 ftco-animate">
+            <div class="staff text-center border p-4 rounded">
+              <div class="img mb-4" style="background-image: url('{% static 'images/R.png' %}'); border-radius: 50%; height: 120px; width: 120px; margin: 0 auto;"></div>
+              <div class="text">
+                <h3>Innovate AI</h3>
+                <span class="position mb-2 d-block">12 Openings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#275df5"/></svg></div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'js/scrollax.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="ftco-navbar" style="padding-top: 10px; padding-bottom: 10px;">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold" href="{% url 'index' %}" style="color: #275df5; font-size: 24px;">
+      Job<span style="color: #333333;">Detector</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item active"><a href="{% url 'index' %}" class="nav-link" style="color: #333; font-weight: 500;">Home</a></li>
+
+        <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link" style="color: #333; font-weight: 500;">Contact</a></li>
+        <li class="nav-item"><a href="{% url 'admin_login' %}" class="nav-link" style="color: #333; font-weight: 500;">Admin</a></li>
+
+        <li class="nav-item"><a href="{% url 'customer_login' %}" class="nav-link" style="color: #333; font-weight: 500;">Customer</a></li>
+
+        <li class="nav-item">
+          <a href="{% url 'jobprovider_login' %}" class="btn btn-primary ml-lg-3 px-4 py-2 rounded" style="color: white !important; font-weight: 600;">Job Provider</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

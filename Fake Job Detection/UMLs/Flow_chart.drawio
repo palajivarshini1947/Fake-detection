@@ -1,0 +1,51 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36">
+  <diagram name="Page-1" id="DQctxenm9vdcLVBksZOo">
+    <mxGraphModel dx="1269" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-8" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="nUGheKd7KeGbpEHUhhdz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-1" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="User" vertex="1">
+          <mxGeometry height="60" width="30" x="10" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-11" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=52.5;exitPerimeter=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="nUGheKd7KeGbpEHUhhdz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-2" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Database" vertex="1">
+          <mxGeometry height="80" width="60" x="570" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-9" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="30" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Job Detection" vertex="1">
+          <mxGeometry height="60" width="120" x="230" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-12" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="nUGheKd7KeGbpEHUhhdz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Admin" vertex="1">
+          <mxGeometry height="60" width="120" x="250" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-13" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="nUGheKd7KeGbpEHUhhdz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Customer" vertex="1">
+          <mxGeometry height="60" width="120" x="180" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-10" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=27.5;entryPerimeter=0;" target="nUGheKd7KeGbpEHUhhdz-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-15" edge="1" parent="1" source="nUGheKd7KeGbpEHUhhdz-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="nUGheKd7KeGbpEHUhhdz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nUGheKd7KeGbpEHUhhdz-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Job Provider" vertex="1">
+          <mxGeometry height="60" width="120" x="430" y="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

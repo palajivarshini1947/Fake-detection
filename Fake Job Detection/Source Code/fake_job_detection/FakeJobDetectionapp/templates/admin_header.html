@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="ftco-navbar" style="padding-top: 10px; padding-bottom: 10px;">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold d-flex align-items-center" href="{% url 'admin_index' %}" style="color: #275df5; font-size: 24px;">
+      Job<span style="color: #333333;">Detector</span>
+      <span class="badge badge-secondary ml-2" style="font-size: 12px; vertical-align: middle; background-color: #e0e0e0; color: #333;">Admin</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item active"><a href="{% url 'admin_index' %}" class="nav-link" style="color: #333; font-weight: 500;">Dashboard</a></li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #333; font-weight: 500;">
+              Manage Users
+            </a>
+            <div class="dropdown-menu shadow-sm border-0 mt-2" aria-labelledby="usersDropdown">
+                <a class="dropdown-item py-2" href="{% url 'admin_viewcustomer' %}">Customers</a>
+                <a class="dropdown-item py-2" href="{% url 'admin_viewjobprovider' %}">Job Provider</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #333; font-weight: 500;">
+              Notifications
+            </a>
+            <div class="dropdown-menu shadow-sm border-0 mt-2" aria-labelledby="notifDropdown">
+                <a class="dropdown-item py-2" href="{% url 'admin_addnotification' %}">Add Notification</a>
+                <a class="dropdown-item py-2" href="{% url 'admin_viewnotification' %}">View Notifications</a>
+            </div>
+        </li>
+
+        <li class="nav-item"><a href="{% url 'admin_viewcontact' %}" class="nav-link" style="color: #333; font-weight: 500;">Messages</a></li>
+
+        <li class="nav-item dropdown ml-lg-3">
+            <a class="nav-link dropdown-toggle btn btn-outline-primary px-3 py-2" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: 600; border-radius: 5px;">
+              <i class="icon-user mr-1"></i> My Account
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 mt-2" aria-labelledby="adminDropdown">
+                <a class="dropdown-item py-2" href="{% url 'admin_password' %}">Change Password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger font-weight-bold py-2" href="{% url 'admin_login' %}">Logout</a>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

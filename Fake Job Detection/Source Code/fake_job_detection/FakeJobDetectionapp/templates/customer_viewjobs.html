@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Job Detector - Available Jobs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Miss+Fajardose&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        .jobs-section { padding: 80px 0; background-color: #f8f9fa; }
+
+        .job-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            padding: 30px 25px;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        .job-title { font-weight: 700; color: #2c3e50; font-size: 20px; margin-bottom: 5px; }
+        .job-company { color: #ff6f61; font-weight: 600; font-size: 14px; margin-bottom: 15px; }
+
+        .job-detail-row { font-size: 14px; color: #666; margin-bottom: 8px; display: flex; align-items: center; }
+        .job-detail-row span[class^="icon-"] { color: #ff6f61; width: 25px; font-size: 16px; }
+
+        .job-description {
+            font-size: 14px;
+            color: #777;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            /* Truncates long text to 3 lines */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .job-footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .empty-state {
+            background: #fff;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 100%;
+        }
+        .btn-view {
+            background-color: #f8f9fa; color: #ff6f61; border: 1px solid #ff6f61; padding: 5px 15px; font-weight: 600; border-radius: 5px; transition: 0.3s; text-decoration: none !important;
+        }
+        .btn-view:hover { background-color: #ff6f61; color: white; }
+    </style>
+</head>
+<body>
+    {% include 'customer_header.html' %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/office_bg.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Available Jobs</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2"><a href="{% url 'customer_index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span>
+                <span>View Jobs <i class="ion-ios-arrow-forward"></i></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="jobs-section">
+       <div class="container">
+          <div class="row justify-content-center">
+             <div class="col-md-12">
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success text-center mb-4">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="d-flex justify-content-between align-items-center mb-5 ftco-animate">
+                    <h2 class="mb-0" style="font-weight: 700; color: #333;">Latest Job Postings</h2>
+                </div>
+
+                <div class="row">
+                    {% if jobs %}
+                        {% for job in jobs %}
+                        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch ftco-animate">
+                            <div class="job-card w-100">
+                                <h3 class="job-title">{{ job.title }}</h3>
+                                <div class="job-company">{{ job.company_name }}</div>
+
+                                <div class="job-detail-row">
+                                    <span class="icon-map-marker"></span> {{ job.location }}
+                                </div>
+
+                                {% if job.salary_range %}
+                                <div class="job-detail-row">
+                                    <span class="icon-money"></span> {{ job.salary_range }}
+                                </div>
+                                {% endif %}
+
+                                <div class="job-description">
+                                    {{ job.description }}
+                                </div>
+
+                                <div class="job-footer">
+                                    <span>Posted: {{ job.created_at|date:"M d, Y" }}</span>
+                                    <div>
+                                        <a href="{% url 'customer_jobdetails' job.id %}" class="btn-view" title="View Details">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12 ftco-animate">
+                            <div class="empty-state">
+                                <span class="icon-briefcase display-4 text-muted mb-3 d-block"></span>
+                                <h4 class="text-muted">No jobs are currently available.</h4>
+                                <p class="text-muted mb-4">Please check back later for new opportunities.</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+             </div>
+          </div>
+       </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

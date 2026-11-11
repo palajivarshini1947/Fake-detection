@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Job Detector - View Applications</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Miss+Fajardose&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        .app-section { padding: 80px 0; background-color: #f8f9fa; }
+
+        .app-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .app-card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px dashed #f4f4f4;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .applicant-name { font-weight: 800; color: #2c3e50; font-size: 24px; margin-bottom: 5px; }
+
+        .contact-info { font-size: 14px; color: #666; margin-bottom: 5px; }
+        .contact-info span[class^="icon-"] { color: #ff6f61; margin-right: 5px; }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .status-Pending { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .status-Accepted { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status-Rejected { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+        /* Body Details */
+        .section-title { font-size: 16px; font-weight: 700; color: #333; margin-bottom: 10px; }
+        .cover-letter {
+            background: #fdfdfd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            font-size: 14px;
+            color: #555;
+            white-space: pre-wrap;
+        }
+
+        /* Buttons */
+        .btn-download {
+            background-color: #f8f9fa; color: #333; border: 1px solid #ccc; padding: 10px 25px;
+            font-weight: 600; border-radius: 5px; transition: 0.3s; text-decoration: none !important; display: inline-block;
+        }
+        .btn-download:hover { background-color: #e2e6ea; color: #000; }
+
+        .btn-accept { background-color: #28a745; color: white; border: none; padding: 10px 25px; font-weight: 600; border-radius: 5px; transition: 0.3s; }
+        .btn-accept:hover { background-color: #218838; color: white; }
+
+        .btn-reject { background-color: #dc3545; color: white; border: none; padding: 10px 25px; font-weight: 600; border-radius: 5px; transition: 0.3s; }
+        .btn-reject:hover { background-color: #c82333; color: white; }
+
+        .empty-state { background: #fff; padding: 60px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); text-align: center; }
+
+        .btn-back-header { background-color: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); padding: 8px 20px; border-radius: 5px; font-size: 14px; text-decoration: none !important; transition: 0.3s; }
+        .btn-back-header:hover { background-color: #fff; color: #333; }
+    </style>
+</head>
+<body>
+    {% include 'jobprovider_header.html' %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/office_bg.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Applicants</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2"><a href="{% url 'jobprovider_index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span>
+                <span class="mr-2"><a href="{% url 'jobprovider_viewjobs' %}">Jobs <i class="ion-ios-arrow-forward"></i></a></span>
+                <span>Applications <i class="ion-ios-arrow-forward"></i></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="app-section">
+       <div class="container">
+          <div class="row justify-content-center">
+             <div class="col-lg-10">
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success text-center mb-4">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="d-flex justify-content-between align-items-center mb-5 ftco-animate">
+                    <div>
+                        <h2 class="mb-1" style="font-weight: 700; color: #333;">Applications</h2>
+                        <h5 class="text-primary">{{ job_posting.title }}</h5>
+                    </div>
+                    <a href="{% url 'jobprovider_viewjobs' %}" class="btn-download shadow-sm">← Back to All Jobs</a>
+                </div>
+
+                {% if applications %}
+                    {% for app in applications %}
+                    <div class="app-card ftco-animate">
+
+                        <div class="app-header">
+                            <div>
+                                <h3 class="applicant-name">{{ app.applicant.name }}</h3>
+
+                                <div class="contact-info"><span class="icon-envelope"></span> <a href="mailto:{{ app.applicant.email }}">{{ app.applicant.email }}</a></div>
+                                <div class="contact-info"><span class="icon-phone"></span> {{ app.applicant.mobile }}</div>
+                                <div class="contact-info text-muted mt-2"><span class="icon-calendar"></span> Applied on: {{ app.applied_at|date:"F d, Y" }}</div>
+                            </div>
+
+                            <div>
+                                <span class="status-badge status-{{ app.status }}">
+                                    {{ app.status }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="app-body">
+                            <div class="mb-4">
+                                {% if app.resume %}
+                                <a href="{{ app.resume.url }}" class="btn-download shadow-sm" target="_blank" download>
+                                    <span class="icon-download"></span> Download Resume
+                                </a>
+                                {% else %}
+                                <span class="text-danger">No resume attached.</span>
+                                {% endif %}
+                            </div>
+
+                            {% if app.cover_letter %}
+                            <h5 class="section-title">Cover Letter</h5>
+                            <div class="cover-letter">{{ app.cover_letter }}</div>
+                            {% endif %}
+                        </div>
+
+                        {% if app.status == 'Pending' %}
+<div class="mt-4 pt-3" style="border-top: 1px dashed #eee;">
+    <a href="{% url 'jobprovider_accept_application' app.id %}" class="btn-accept shadow-sm mr-2" onclick="return confirm('Are you sure you want to ACCEPT this candidate? They will receive an email notification.');">
+        <span class="icon-check"></span> Accept
+    </a>
+
+    <a href="{% url 'jobprovider_reject_application' app.id %}" class="btn-reject shadow-sm" onclick="return confirm('Are you sure you want to REJECT this candidate? They will receive an email notification.');">
+        <span class="icon-close"></span> Reject
+    </a>
+</div>
+{% endif %}
+
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state ftco-animate">
+                        <span class="icon-folder-open display-4 text-muted mb-3 d-block"></span>
+                        <h4 class="text-muted">No applications yet.</h4>
+                        <p class="text-muted">Once candidates apply for this position, they will appear here.</p>
+                    </div>
+                {% endif %}
+
+             </div>
+          </div>
+       </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
